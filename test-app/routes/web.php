@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Request;
-
+use App\Models\Listing;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,23 +14,21 @@ use Symfony\Component\HttpFoundation\Request;
 |
 */
 
+
+//All Lisitngs
 Route::get('/', function () {
     return view('listings', [
         'heading' => 'Latest Listings',
-        'listings' =>[
-            [
-                'id' => 1,
-                'title' => 'Listing One',
-                'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore temporibus quaerat molestiae accusamus doloribus, quam quo nostrum repellat voluptatum consequuntur a repellendus. Maiores laudantium ea illo molestias nemo, dolorum eos incidunt cupiditate delectus cum dolore voluptate numquam, aspernatur dolores tenetur? Quos ut magnam fugit quaerat mollitia aliquam laborum similique. Fuga.'
-            ]
-            ,
-            [
-                'id' => 2,
-                'title' => 'Listing Two',
-                'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore temporibus quaerat molestiae accusamus doloribus, quam quo nostrum repellat voluptatum consequuntur a repellendus. Maiores laudantium ea illo molestias nemo, dolorum eos incidunt cupiditate delectus cum dolore voluptate numquam, aspernatur dolores tenetur? Quos ut magnam fugit quaerat mollitia aliquam laborum similique. Fuga.'
-            ]
-        ]
+        'listings' => Listing::all()
+           
+        
     ]);
     
 });
 
+//Single listing
+Route::get('/listings/{id}', function ($id) {
+    return view('listing', [
+        'listing' => Listing::find($id)
+    ]);
+});

@@ -1,8 +1,16 @@
-<h1><?php echo $heading ?></h1>
+<h1>{{$heading }}</h1>
 
-<?php foreach($listings as $lsiting): ?>
-    <h2><?php echo $lsiting['title']; ?></h2>
-    <p><?php echo $lsiting['description']; ?></p>
+@if (count($listings)==0)
+    <p>No listings found</p>
+@endif
+
+@foreach($listings as $lsiting)
+    <h2>
+        {{$lsiting['title']}}
+    </h2>
+    <p>
+        {{$lsiting['description']}}>
+    </p>
 
 
-<?php endforeach;?>
+@endforeach
