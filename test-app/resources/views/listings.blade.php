@@ -4,12 +4,12 @@
     <p>No listings found</p>
 @endif
 
-@foreach($listings as $lsiting)
+@foreach($listings as $listing)
     <h2>
-        {{$lsiting['title']}}
+       <a href="/listings/{{$listing['id']}}"> {{$listing['title']}}</a>
     </h2>
     <p>
-        {{$lsiting['description']}}>
+        {{$listing['description']}}>
     </p>
 
 
