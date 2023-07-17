@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Request;
-use App\Models\Listing;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +28,25 @@ Route::get('/', function () {
 });
 
 //Single listing
-Route::get('/listings/{id}', function ($id) {
+Route::get('/listings/{listing}', function (Listing 
+$listing) {
     return view('listing', [
-        'listing' => Listing::find($id)
+        'listing' => $listing
     ]);
+    
+
+    // // Single listing
+    // Route::get('/listings/{listing}', function ($listing) {
+    //     try {
+    //         $listing = Listing::findOrFail($listing);
+    //         return view('listing', [
+    //             'listing' => $listing
+    //         ]);
+    //     } catch (ModelNotFoundException $e) {
+    //         // Handle the case when the listing is not found
+    //         abort(404, 'Listing not found');
+    //     }
+    // });
+    
+
 });
