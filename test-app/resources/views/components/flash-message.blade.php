@@ -7,6 +7,6 @@
         x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-90" 
-        class="fixed top-0 left-1/2 transform -translate-x-1/2 bg-laravel text-white px-48 py-3"><p>
+        class="fixed top-0 left-1/2 transform w-fit -translate-x-1/2 bg-laravel text-white px-48 py-3"><p>
     {{session('message')}}</p></div>
 @endif
