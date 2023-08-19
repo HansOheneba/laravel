@@ -23,6 +23,9 @@ Route::get('/',[ListingController::class, 'index']);
 //Show Create form
 Route::get('/listings/create', [ListingController::class, 'create']);
 
+//Store Edit Form
+Route::get('/listings', [ListingController::class, 'store']);
+
 //Store listing Data 
 Route::post('/listings', [ListingController::class, 'store']);
 
